@@ -16,11 +16,11 @@ public interface IApiClientController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("create")
-    ResponseEntity<List<ResponseClient>> create(@RequestBody RequestClient client);
+    ResponseEntity<ResponseClient> create(@RequestBody RequestClient client);
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("client/{id}")
-    ResponseEntity<ResponseClient> findById(@PathVariable("id") Long id) throws NullPointerException;
+    ResponseEntity<ResponseClient> findById(@PathVariable("id") Long id);
 
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("client/{id}")

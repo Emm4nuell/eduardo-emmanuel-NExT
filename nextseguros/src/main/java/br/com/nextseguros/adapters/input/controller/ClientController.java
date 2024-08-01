@@ -9,7 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +35,7 @@ public class ClientController implements IApiClientController {
     }
 
     @Override
-    public ResponseEntity<List<ResponseClient>> create(RequestClient client) {
+    public ResponseEntity<ResponseClient> create(RequestClient client) {
         var model = ClientModel.builder()
                 .name(client.getName())
                 .age(client.getAge())
@@ -41,8 +43,12 @@ public class ClientController implements IApiClientController {
                 .income(client.getIncome())
                 .marital_status(client.getMarital_status())
                 .build();
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(model.getId())
+                .toUri();
         iCreateClientUseCase.execute(model);
-        return null;
+        return ResponseEntity.created(location).body(mapper.convertValue(client, ResponseClient.class));
     }
 
     @Override
