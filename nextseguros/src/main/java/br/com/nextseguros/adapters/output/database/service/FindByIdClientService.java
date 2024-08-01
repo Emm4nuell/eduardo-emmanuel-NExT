@@ -21,6 +21,6 @@ public class FindByIdClientService  implements IFindByIdClientService {
         if (entity.isPresent()){
             return mapper.convertValue(entity.get(), ClientModel.class);
         }
-        throw new  NullPointerException();
+        throw new  NullPointerException("Customer not located id " + id);
     }
 }

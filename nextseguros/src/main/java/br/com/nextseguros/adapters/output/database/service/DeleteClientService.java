@@ -17,5 +17,6 @@ public class DeleteClientService implements IDeleteClientService {
         if(entity.isPresent()){
             clientRepository.deleteById(id);
         }
+        throw new NullPointerException("Customer not located id " + id);
     }
 }

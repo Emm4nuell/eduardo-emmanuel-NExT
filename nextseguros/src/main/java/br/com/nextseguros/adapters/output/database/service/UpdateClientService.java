@@ -17,7 +17,7 @@ public class UpdateClientService implements IUpdateClientService {
     public void execute(Long id, ClientModel clientModel) {
         var entityId = clientRepository.findById(id);
         if (entityId.isEmpty()){
-            throw new NullPointerException("Client NullPointException update database");
+            throw new NullPointerException("Client NullPointException update database id " + clientModel.getId());
         }
         clientModel.setId(id);
         var entity = mapper.convertValue(clientModel, ClientEntity.class);
