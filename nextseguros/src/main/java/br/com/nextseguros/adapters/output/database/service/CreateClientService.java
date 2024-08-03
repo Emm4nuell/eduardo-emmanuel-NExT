@@ -19,6 +19,6 @@ public class CreateClientService implements ICreateClientService {
     @Transactional
     @Override
     public void execute(ClientModel model) {
-        clientRepository.save(mapper.convertValue(model, ClientEntity.class));
+//        clientRepository.save(mapper.convertValue(model, ClientEntity.class));
     }
 }

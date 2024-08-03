@@ -38,6 +38,8 @@ public class ClientController implements IApiClientController {
     public ResponseEntity<ResponseClient> create(RequestClient client) {
         var model = ClientModel.builder()
                 .name(client.getName())
+                .document(client.getDocument())
+                .email(client.getEmail())
                 .age(client.getAge())
                 .dependents(client.getDependents())
                 .income(client.getIncome())
