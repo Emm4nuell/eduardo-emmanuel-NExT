@@ -13,6 +13,8 @@ import java.util.List;
 @Builder
 public class ResponseClient {
     private String name;
+    private String document;
+    private String email;
     private int age;
     private int dependents;
     private List<String> houses;

@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class RequestClient {
     private String name;
+    private String document;
+    private String email;
     private int age;
     private int dependents;
     private float income;

@@ -14,6 +14,8 @@ import java.util.List;
 public class ClientModel {
     private Long id;
     private String name;
+    private String document;
+    private String email;
     private int age;
     private int dependents;
     private List<String> houses;
