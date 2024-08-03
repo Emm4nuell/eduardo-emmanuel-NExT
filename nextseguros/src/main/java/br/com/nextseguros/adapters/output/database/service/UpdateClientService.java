@@ -11,16 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class UpdateClientService implements IUpdateClientService {
+
     private final ClientRepository clientRepository;
     private final ObjectMapper mapper;
+
     @Override
-    public void execute(Long id, ClientModel clientModel) {
-        var entityId = clientRepository.findById(id);
-        if (entityId.isEmpty()){
-            throw new NullPointerException("Client NullPointException update database id " + clientModel.getId());
-        }
-        clientModel.setId(id);
-        var entity = mapper.convertValue(clientModel, ClientEntity.class);
-        clientRepository.save(entity);
+    public void execute(ClientModel clientModel) {
+        clientRepository.save(mapper.convertValue(clientModel, ClientEntity.class));
     }
 }

@@ -15,9 +15,9 @@ public class CreateClientUseCase implements ICreateClientUseCase {
 
     @Override
     public void execute(ClientModel clientModel) {
-        if (clientModel != null){
+        if (clientModel != null) {
             iCreateClientService.execute(clientModel);
-        }else {
+        } else {
             throw new NullPointClientException("Error create client " + clientModel);
         }
     }
