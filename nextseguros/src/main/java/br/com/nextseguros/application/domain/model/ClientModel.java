@@ -1,17 +1,15 @@
 package br.com.nextseguros.application.domain.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ClientModel {
+public class ClientModel{
     private Long id;
     private String name;
     private String document;
@@ -22,5 +20,5 @@ public class ClientModel {
     private float income;
     private String marital_status;
     private List<String> vehicles;
-
+    private List<Long> id_house;
 }

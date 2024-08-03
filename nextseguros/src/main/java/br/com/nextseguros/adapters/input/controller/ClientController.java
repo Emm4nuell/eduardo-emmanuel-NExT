@@ -36,15 +36,7 @@ public class ClientController implements IApiClientController {
 
     @Override
     public ResponseEntity<ResponseClient> create(RequestClient client) {
-        var model = ClientModel.builder()
-                .name(client.getName())
-                .document(client.getDocument())
-                .email(client.getEmail())
-                .age(client.getAge())
-                .dependents(client.getDependents())
-                .income(client.getIncome())
-                .marital_status(client.getMarital_status())
-                .build();
+        var model = mapper.convertValue(client, ClientModel.class);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(model.getId())

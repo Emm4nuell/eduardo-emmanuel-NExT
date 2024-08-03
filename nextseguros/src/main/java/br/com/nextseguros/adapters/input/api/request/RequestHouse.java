@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class RequestHouse {
-    private Long id;
     private String ownership_status;
     private String location;
     private String zipcode;

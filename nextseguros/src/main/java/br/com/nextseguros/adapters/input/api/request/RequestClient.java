@@ -17,5 +17,4 @@ public class RequestClient {
     private int dependents;
     private float income;
     private String marital_status;
-    private RequestHouse id_house;
 }

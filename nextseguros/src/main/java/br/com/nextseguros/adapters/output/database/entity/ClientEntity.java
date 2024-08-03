@@ -26,4 +26,5 @@ public class ClientEntity {
     private float income;
     private String marital_status;
     private List<String> vehicles;
+    private List<Long> id_house;
 }
