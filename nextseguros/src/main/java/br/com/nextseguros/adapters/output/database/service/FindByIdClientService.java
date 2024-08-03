@@ -16,11 +16,7 @@ public class FindByIdClientService  implements IFindByIdClientService {
     private final ClientRepository clientRepository;
     private final ObjectMapper mapper;
     @Override
-    public ClientModel execute(Long id) {
-        Optional<ClientEntity> entity = clientRepository.findById(id);
-        if (entity.isPresent()){
-            return mapper.convertValue(entity.get(), ClientModel.class);
-        }
-        throw new  NullPointerException("Customer not located id " + id);
+    public Optional<ClientModel> execute(Long id) {
+        return Optional.ofNullable(mapper.convertValue(clientRepository.findById(id), ClientModel.class));
     }
 }

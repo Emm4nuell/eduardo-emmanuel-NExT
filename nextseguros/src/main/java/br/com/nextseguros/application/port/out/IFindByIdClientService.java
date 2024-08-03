@@ -2,6 +2,8 @@ package br.com.nextseguros.application.port.out;
 
 import br.com.nextseguros.application.domain.model.ClientModel;
 
+import java.util.Optional;
+
 public interface IFindByIdClientService {
-    ClientModel execute(Long id);
+    Optional<ClientModel> execute(Long id);
 }

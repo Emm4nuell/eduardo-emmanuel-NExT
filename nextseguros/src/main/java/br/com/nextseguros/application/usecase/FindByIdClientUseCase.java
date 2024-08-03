@@ -1,5 +1,6 @@
 package br.com.nextseguros.application.usecase;
 
+import br.com.nextseguros.application.domain.exception.NullPointClientException;
 import br.com.nextseguros.application.domain.model.ClientModel;
 import br.com.nextseguros.application.port.in.IFindByIdClientUseCase;
 import br.com.nextseguros.application.port.out.IFindByIdClientService;
@@ -14,6 +15,7 @@ public class FindByIdClientUseCase implements IFindByIdClientUseCase {
 
     @Override
     public ClientModel execute(Long id) {
-        return iFindByIdClientService.execute(id);
+        var client = iFindByIdClientService.execute(id).orElseThrow(() -> new NullPointClientException("Client not location!"));
+        return client;
     }
 }
