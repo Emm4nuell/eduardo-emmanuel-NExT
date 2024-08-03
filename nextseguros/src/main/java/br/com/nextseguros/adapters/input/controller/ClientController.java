@@ -4,6 +4,7 @@ import br.com.nextseguros.adapters.input.api.IApiClientController;
 import br.com.nextseguros.adapters.input.api.request.RequestClient;
 import br.com.nextseguros.adapters.input.api.response.ResponseClient;
 import br.com.nextseguros.application.domain.model.ClientModel;
+import br.com.nextseguros.application.domain.model.HouseModel;
 import br.com.nextseguros.application.port.in.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
