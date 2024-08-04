@@ -1,6 +1,7 @@
 package br.com.nextseguros.adapters.input.api;
 
 import br.com.nextseguros.adapters.input.api.request.RequestClient;
+import br.com.nextseguros.adapters.input.api.request.RequestHouse;
 import br.com.nextseguros.adapters.input.api.response.ResponseClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,4 +30,8 @@ public interface IApiClientController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("client/{id}")
     ResponseEntity<Void> delete(@PathVariable("id") Long id);
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("create/house")
+    ResponseEntity<Void> createdHouse(@RequestBody RequestHouse house);
 }

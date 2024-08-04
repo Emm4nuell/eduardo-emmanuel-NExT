@@ -2,6 +2,7 @@ package br.com.nextseguros.adapters.input.controller;
 
 import br.com.nextseguros.adapters.input.api.IApiClientController;
 import br.com.nextseguros.adapters.input.api.request.RequestClient;
+import br.com.nextseguros.adapters.input.api.request.RequestHouse;
 import br.com.nextseguros.adapters.input.api.response.ResponseClient;
 import br.com.nextseguros.application.domain.model.ClientModel;
 import br.com.nextseguros.application.domain.model.HouseModel;
@@ -25,6 +26,7 @@ public class ClientController implements IApiClientController {
     private final IFindByIdClientUseCase iFindByIdClientUseCase;
     private final IUpdateClientUseCase iUpdateClientUseCase;
     private final IDeleteClientUseCase iDeleteClientUseCase;
+    private final ICreatedHouseUseCase iCreatedHouseUseCase;
     private final ObjectMapper mapper;
 
     @Override
@@ -69,5 +71,18 @@ public class ClientController implements IApiClientController {
     public ResponseEntity<Void> delete(Long id) {
         iDeleteClientUseCase.execute(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @Override
+    public ResponseEntity<Void> createdHouse(RequestHouse house) {
+        var request = mapper.convertValue(house, HouseModel.class);
+        iCreatedHouseUseCase.execute(request);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(request.getId())
+                .toUri();
+
+        return ResponseEntity.created(uri).build();
     }
 }
