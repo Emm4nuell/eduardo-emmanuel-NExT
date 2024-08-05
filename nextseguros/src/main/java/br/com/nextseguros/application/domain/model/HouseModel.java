@@ -14,4 +14,5 @@ public class HouseModel {
     private String ownership_status;
     private String location;
     private String zipcode;
+    private Long id_client;
 }

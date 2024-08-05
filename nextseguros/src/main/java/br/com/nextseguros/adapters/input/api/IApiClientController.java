@@ -32,6 +32,6 @@ public interface IApiClientController {
     ResponseEntity<Void> delete(@PathVariable("id") Long id);
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("create/house")
-    ResponseEntity<Void> createdHouse(@RequestBody RequestHouse house);
+    @PostMapping("create/house/{id}")
+    ResponseEntity<Void> createdHouse(@PathVariable("id") Long id, @RequestBody RequestHouse house);
 }

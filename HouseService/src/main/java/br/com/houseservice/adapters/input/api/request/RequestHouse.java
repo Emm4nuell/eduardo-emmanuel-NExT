@@ -1,4 +1,4 @@
-package br.com.nextseguros.adapters.input.api.request;
+package br.com.houseservice.adapters.input.api.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

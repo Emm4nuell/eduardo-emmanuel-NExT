@@ -74,7 +74,8 @@ public class ClientController implements IApiClientController {
     }
 
     @Override
-    public ResponseEntity<Void> createdHouse(RequestHouse house) {
+    public ResponseEntity<Void> createdHouse(Long id, RequestHouse house) {
+        house.setId_client(id);
         var request = mapper.convertValue(house, HouseModel.class);
         iCreatedHouseUseCase.execute(request);
         URI uri = ServletUriComponentsBuilder
