@@ -9,6 +9,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/HouseSeguros/pom.xml" />
         <option value="$PROJECT_DIR$/house-service/pom.xml" />
       </set>
     </option>

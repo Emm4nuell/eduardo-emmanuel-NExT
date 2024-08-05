@@ -8,14 +8,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="nextseguros" />
+        <module name="HouseService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="house-service" target="17" />
+      <module name="HouseSeguros" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="HouseSeguros" options="-parameters" />
+      <module name="HouseService" options="-parameters" />
       <module name="eduardo-emmanuel-NExT" options="" />
       <module name="house-service" options="-parameters" />
       <module name="nextseguros" options="-parameters" />
