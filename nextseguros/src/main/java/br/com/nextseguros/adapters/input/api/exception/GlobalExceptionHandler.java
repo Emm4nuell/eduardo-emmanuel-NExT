@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
+import java.net.ConnectException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,6 +57,15 @@ public class GlobalExceptionHandler {
                 HttpStatus.NOT_FOUND,
                 exception.getMessage(),
                 request.getRequestURI()));
+    }
+
+    @ExceptionHandler(ConnectException.class)
+    public ResponseEntity<Map<String, Object>> connectionException(
+            ConnectException exception, HttpServletRequest http){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(createErrorResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR,
+                exception.getMessage(),
+                http.getRequestURI()));
     }
 
     private Map<String, Object> createErrorResponse(HttpStatus status, String message, String path) {
