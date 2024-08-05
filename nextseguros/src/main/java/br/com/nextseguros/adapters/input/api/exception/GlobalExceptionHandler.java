@@ -1,6 +1,7 @@
 package br.com.nextseguros.adapters.input.api.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -14,11 +15,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<Map<String, Object>> httpMessageNotReadableException(
-            HttpMessageNotReadableException exception, HttpServletRequest request){
+    public ResponseEntity<Map<String, Object>> handleHttpMessageNotReadableException(
+            HttpMessageNotReadableException exception, HttpServletRequest request) {
+        log.error("HttpMessageNotReadableException: {}", exception.getMessage(), exception);
         return ResponseEntity.badRequest().body(createErrorResponse(
                 HttpStatus.BAD_REQUEST,
                 exception.getMessage(),
@@ -26,8 +29,9 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(NullPointerException.class)
-    public ResponseEntity<Map<String, Object>> nullPointerException(
-            NullPointerException exception, HttpServletRequest request){
+    public ResponseEntity<Map<String, Object>> handleNullPointerException(
+            NullPointerException exception, HttpServletRequest request) {
+        log.error("NullPointerException: {}", exception.getMessage(), exception);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(createErrorResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 exception.getMessage(),
@@ -35,8 +39,9 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity<Map<String, Object>> methodArgumentTypeMismatchException(
-            MethodArgumentTypeMismatchException exception, HttpServletRequest request){
+    public ResponseEntity<Map<String, Object>> handleMethodArgumentTypeMismatchException(
+            MethodArgumentTypeMismatchException exception, HttpServletRequest request) {
+        log.error("MethodArgumentTypeMismatchException: {}", exception.getMessage(), exception);
         return ResponseEntity.badRequest().body(createErrorResponse(
                 HttpStatus.BAD_REQUEST,
                 exception.getMessage(),
@@ -44,15 +49,16 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(NoResourceFoundException.class)
-    public ResponseEntity<Map<String, Object>> NoResourceFoundException(
-            NoResourceFoundException exception, HttpServletRequest request){
+    public ResponseEntity<Map<String, Object>> handleNoResourceFoundException(
+            NoResourceFoundException exception, HttpServletRequest request) {
+        log.error("NoResourceFoundException: {}", exception.getMessage(), exception);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(createErrorResponse(
                 HttpStatus.NOT_FOUND,
                 exception.getMessage(),
                 request.getRequestURI()));
     }
 
-    public Map<String, Object> createErrorResponse(HttpStatus status, String message, String path){
+    private Map<String, Object> createErrorResponse(HttpStatus status, String message, String path) {
         Map<String, Object> error = new HashMap<>();
         error.put("timestamp", LocalDateTime.now());
         error.put("status", status.value());
