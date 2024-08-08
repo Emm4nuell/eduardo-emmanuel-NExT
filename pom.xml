@@ -16,7 +16,6 @@
 	<description>teste de recrutamento do NExT 2023.1.</description>
     <modules>
         <module>nextseguros</module>
-        <module>HouseSeguros</module>
 		<module>HouseService</module>
 	</modules>
 	<properties>

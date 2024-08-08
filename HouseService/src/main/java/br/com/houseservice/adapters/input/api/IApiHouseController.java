@@ -1,6 +1,7 @@
 package br.com.houseservice.adapters.input.api;
 
 import br.com.houseservice.adapters.input.api.request.RequestHouse;
+import br.com.houseservice.adapters.input.api.response.ResponseHouse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,5 +10,5 @@ import org.springframework.web.bind.annotation.*;
 public interface IApiHouseController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("create")
-    ResponseEntity<Void> create(@RequestBody RequestHouse request);
+    ResponseEntity<ResponseHouse> create(@RequestBody RequestHouse request);
 }

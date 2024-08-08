@@ -1,4 +1,4 @@
-package br.com.nextseguros.adapters.input.api.exception;
+package br.com.nextseguros.adapters.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -60,14 +60,14 @@ public class GlobalExceptionHandler {
                 request.getRequestURI()));
     }
 
-    @ExceptionHandler(ConnectException.class)
-    public ResponseEntity<Map<String, Object>> handleConnectionException(
-            ConnectException exception, HttpServletRequest http){
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(createErrorResponse(
-                HttpStatus.INTERNAL_SERVER_ERROR,
-                exception.getMessage(),
-                http.getRequestURI()));
-    }
+//    @ExceptionHandler(ConnectException.class)
+//    public ResponseEntity<Map<String, Object>> handleConnectionException(
+//            ConnectException exception, HttpServletRequest http){
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(createErrorResponse(
+//                HttpStatus.INTERNAL_SERVER_ERROR,
+//                exception.getMessage(),
+//                http.getRequestURI()));
+//    }
 
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<Map<String, Object>> handleBadRequestException(BadRequestException exception, HttpServletRequest http){
