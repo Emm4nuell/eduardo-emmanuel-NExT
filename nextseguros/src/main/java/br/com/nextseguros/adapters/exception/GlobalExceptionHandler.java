@@ -60,23 +60,34 @@ public class GlobalExceptionHandler {
                 request.getRequestURI()));
     }
 
-//    @ExceptionHandler(ConnectException.class)
-//    public ResponseEntity<Map<String, Object>> handleConnectionException(
-//            ConnectException exception, HttpServletRequest http){
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(createErrorResponse(
-//                HttpStatus.INTERNAL_SERVER_ERROR,
-//                exception.getMessage(),
-//                http.getRequestURI()));
-//    }
+    @ExceptionHandler(ConnectException.class)
+    public ResponseEntity<Map<String, Object>> handleConnectionException(
+            ConnectException exception, HttpServletRequest http){
+        log.error("ConnectException: {}" + exception.getMessage(), exception);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(createErrorResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR,
+                exception.getMessage(),
+                http.getRequestURI()));
+    }
 
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<Map<String, Object>> handleBadRequestException(BadRequestException exception, HttpServletRequest http){
+        log.error("BadRequestException: {}" + exception.getMessage(), exception);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
                 createErrorResponse(
                         HttpStatus.BAD_REQUEST,
                         exception.getMessage(),
                         http.getRequestURI()
                 ));
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public Map<String, Object> handleIllegalArgumentException(IllegalArgumentException exception, HttpServletRequest http){
+        log.error("IllegalArgumentException: {}", exception.getMessage(), exception);
+        return createErrorResponse(
+                HttpStatus.BAD_REQUEST,
+                exception.getMessage(),
+                http.getRequestURI());
     }
 
     private Map<String, Object> createErrorResponse(HttpStatus status, String message, String path) {

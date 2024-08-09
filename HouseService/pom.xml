@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>br.com.houseservice</groupId>
-    <artifactId>HouseService</artifactId>
+    <artifactId>houseService</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
