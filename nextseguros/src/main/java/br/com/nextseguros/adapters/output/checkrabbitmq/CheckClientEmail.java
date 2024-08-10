@@ -1,4 +1,4 @@
-package br.com.nextseguros.adapters.output.checkrabbitmq.service;
+package br.com.nextseguros.adapters.output.checkrabbitmq;
 
 import br.com.nextseguros.adapters.output.request.RequestClientCheck;
 import br.com.nextseguros.application.domain.model.ClientModel;
