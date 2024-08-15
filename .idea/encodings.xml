@@ -3,9 +3,11 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/HouseSeguros/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/HouseService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/email-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/house-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/nextseguros/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vehicleService/src/main/java" charset="UTF-8" />
   </component>
 </project>
